@@ -3,20 +3,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BaseItemData", menuName = "Scriptable Objects/BaseItemData")]
 public class BaseItemData : ScriptableObject
 {
+    [SerializeField] public string Title;
+    [SerializeField] public string Description;
+    [SerializeField] public Sprite Sprite;
+    [SerializeField] public InventoryManager inventory;
 
-    public enum Type {
+    [HideInInspector]public enum ItemType {
         Bullet,
         Medicine,
         Armor
     }
-    public Sprite Sprite;
-
-    public string Title;
-
-    public string Description;
+    public ItemType Type;
     public int Weight;
+    public int MaxStuck;
 
-    public void Useitem(){
+    public virtual void UseItem(){
+
+    }
+    public virtual void DeleteItem(){
 
     }
 }

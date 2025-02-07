@@ -9,9 +9,17 @@ public class MedicineBaseScript : BaseItemData
     [SerializeField]
     public int maxCollectionCount;
 
-    private PlayerManager playerManager;
-    public void UseItem(){
+    [SerializeField]
+    public PlayerManager playerManager;
+
+    public override void UseItem(){
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         playerManager.Heal(healAmount);
+    }
+
+    public override void DeleteItem(){
+        foreach (var item in inventory.Items){
+            
+        }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
-using UnityEditor.SceneManagement;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +34,8 @@ public class InventoryWindow : MonoBehaviour
             var drawbleItem = Instantiate(DrawablePrefab);
             drawbleItem.name = item.Title;
             drawbleItem.GetComponent<Image>().sprite = item.Sprite;
+            var drawbleInfo = drawbleItem.GetComponent<ItemInfo>();
+            drawbleInfo.GetInfo(item.Sprite, item.Title, item.Type, stuck: 10, item.Description, item.Weight);
             drawbleItem.transform.SetParent(Slots[i].GetComponent<Transform>());
         }
     }
